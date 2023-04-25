@@ -1,0 +1,144 @@
+.container {
+    width: 100%;
+    max-width: 46rem;
+    padding: 0 1rem;
+}
+
+.header {
+    margin-top: 64px;
+    margin-bottom: 24px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.headerItemBlue {
+    color: var(--blue);
+    font-weight: bold;
+}
+
+.headerItemPurple {
+    color: var(--purple);
+    font-weight: bold;
+}
+
+.headerNumber {
+    display: inline-block;
+    text-align: center;
+    min-width: 35px;
+    margin-left: 12px;
+    background-color: var(--gray-400);
+    color: var(--gray-200);
+    padding: 2px 8px;
+    border-radius: 16px;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.emptyView {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    padding: 64px 0;
+    border-top: 2px solid var(--gray-400);
+}
+
+.emptyView svg {
+    margin-bottom: 24px;
+    color: var(--gray-400);
+}
+
+.taskContainerUnchecked {
+    background-color: var(--gray-500);
+    border: 2px solid var(--gray-400);
+    border-radius: 8px;
+    margin: 12px 0;
+    display: flex;
+    padding: 1rem;
+    align-items: center;
+
+}
+
+.taskDescriptionUnchecked {
+    flex: 1;
+    color: var(--gray-100);
+    margin: 0 0.75rem;
+    font-size: 0.875rem;
+    vertical-align: text-top;
+}
+
+.taskDescriptionChecked {
+    flex: 1;
+    color: var(--gray-300);
+    margin: 0 0.75rem;
+    font-size: 0.875rem;
+    text-decoration: line-through;
+}
+
+
+/* Checkbox styling: https://moderncss.dev/pure-css-custom-checkbox-style/ */
+
+input[type="checkbox"] {
+    -webkit-appearance: none;
+    appearance: none;
+    background-color: var(--gray-400);
+    margin: 0;
+    color: red;
+    width: 24px;
+    height: 24px;
+    border: 0.15em solid var(--blue);
+    border-radius: 100%;
+    transform: translateY(-0.075em);
+    display: grid;
+    place-content: center;
+    cursor: pointer;
+    transition: 120ms background-color ease-in-out, 120ms border-color ease-in-out;
+}
+
+input[type="checkbox"]:hover { 
+    border: 0.15em solid var(--blue-dark);
+}
+
+input[type="checkbox"]:checked {
+    border: none;
+    background-color: var(--purple-dark);
+}
+
+input[type="checkbox"]:checked:hover {
+    background-color: var(--purple);
+}
+
+input[type="checkbox"]::before {
+    content: "";
+    width: 10px;
+    height: 10px;
+    transform: scale(0);
+    transition: 120ms transform ease-in-out;
+    box-shadow: inset 1em 1em var(--gray-100);
+    transform-origin: bottom left;
+    clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+}
+
+input[type="checkbox"]:checked::before {
+    transform: scale(1);
+}
+
+
+/* Delete button */
+
+.deleteTask {
+    background-color: transparent; /* Green */
+    border: none;
+    color: var(--gray-300);
+    padding: 0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.deleteTask:hover {
+    color: var(--danger);
+    background-color: var(--gray-400);
+    border-radius: 8px;
+}
+

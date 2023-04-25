@@ -1,0 +1,52 @@
+.container {
+    max-width: 46rem;
+    width: 100%;
+    padding: 0 1rem;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    margin-top: -27px;
+    gap: 0.5rem;
+}
+
+.container textarea {
+    width: 100%;
+    height: 54px;
+    background: var(--gray-500);
+    resize: none;
+    border: 0;
+    border-radius: 8px;
+    padding: 1rem;
+    color: var(--gray-300);
+}
+
+@media (max-width: 768px) { 
+
+    .container {
+        flex-direction: column;
+    }
+
+}
+
+.container textarea:focus {
+    outline: 2px solid var(--purple-dark);
+    color: var(--gray-100);
+}
+
+.container button {
+    background: var(--blue-dark);
+    padding: 1rem;
+    border: 0;
+    border-radius: 8px;
+    color: var(--gray-100);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    font-weight: bold;
+}
+
+.container button:hover {
+    background: var(--blue);
+    transition: background-color 0.2s;
+}
