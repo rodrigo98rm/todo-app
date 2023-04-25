@@ -40,11 +40,16 @@ function App() {
     });
   }
 
+  function deleteTask(index: number) {
+    tasks.splice(index, 1);
+    setTasks([...tasks]);
+  }
+
   return (
     <div className={styles.container}>
       <Header />
       <CreateTask addTask={addTask} />
-      <TaskList tasks={tasks} />
+      <TaskList tasks={tasks} deleteTask={deleteTask} />
     </div>
   );
 }
