@@ -1,5 +1,6 @@
 import { ClipboardText, Trash } from '@phosphor-icons/react';
 import styles from './styles.module.css';
+import { Task } from '../../App';
 
 interface HeaderCounterProps {
   title: string;
@@ -7,30 +8,9 @@ interface HeaderCounterProps {
   color: 'blue' | 'purple';
 }
 
-interface Task {
-  description: string;
-  done: boolean;
-}
-
 interface TaskListProps {
   tasks: Task[];
 }
-
-const tasksMock: Task[] = [
-  {
-    description: 'Send emails',
-    done: false,
-  },
-  {
-    description: 'Wash dishes',
-    done: true,
-  },
-  {
-    description:
-      'Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer.',
-    done: true,
-  },
-];
 
 function HeaderCounter({ title, count, color }: HeaderCounterProps) {
   return (
@@ -48,9 +28,6 @@ function HeaderCounter({ title, count, color }: HeaderCounterProps) {
 }
 
 export function TaskList({ tasks }: TaskListProps) {
-  // DEBUG ONLY
-  tasks = tasksMock;
-
   return (
     <div className={styles.container}>
       {/* Header */}

@@ -91,7 +91,6 @@ input[type="checkbox"] {
     appearance: none;
     background-color: var(--gray-400);
     margin: 0;
-    color: red;
     width: 24px;
     height: 24px;
     border: 0.15em solid var(--blue);
@@ -100,7 +99,7 @@ input[type="checkbox"] {
     display: grid;
     place-content: center;
     cursor: pointer;
-    transition: 120ms background-color ease-in-out, 120ms border-color ease-in-out;
+    /* transition: 120ms background-color ease-in-out, 120ms border-color ease-in-out; */
 }
 
 input[type="checkbox"]:hover { 
@@ -121,7 +120,7 @@ input[type="checkbox"]::before {
     width: 10px;
     height: 10px;
     transform: scale(0);
-    transition: 120ms transform ease-in-out;
+    /* transition: 120ms transform ease-in-out; */
     box-shadow: inset 1em 1em var(--gray-100);
     transform-origin: bottom left;
     clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
