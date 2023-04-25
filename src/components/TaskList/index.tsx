@@ -70,7 +70,13 @@ export function TaskList({ tasks }: TaskListProps) {
       {!!tasks && (
         <>
           {tasks.map((task) => (
-            <div className={styles.taskContainerUnchecked}>
+            <div
+              className={
+                task.done
+                  ? styles.taskContainerChecked
+                  : styles.taskContainerUnchecked
+              }
+            >
               <input
                 className={styles.taskCheckbox}
                 type="checkbox"

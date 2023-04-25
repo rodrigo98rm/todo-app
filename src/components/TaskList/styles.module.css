@@ -56,7 +56,15 @@
     display: flex;
     padding: 1rem;
     align-items: center;
+}
 
+.taskContainerChecked {
+    background-color: var(--gray-500);
+    border-radius: 8px;
+    margin: 12px 0;
+    display: flex;
+    padding: 1rem;
+    align-items: center;
 }
 
 .taskDescriptionUnchecked {
