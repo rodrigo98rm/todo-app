@@ -11,6 +11,7 @@ interface HeaderCounterProps {
 interface TaskListProps {
   tasks: Task[];
   deleteTask: (index: number) => void;
+  toggleTaskStatus: (index: number) => void;
 }
 
 function HeaderCounter({ title, count, color }: HeaderCounterProps) {
@@ -28,7 +29,11 @@ function HeaderCounter({ title, count, color }: HeaderCounterProps) {
   );
 }
 
-export function TaskList({ tasks, deleteTask }: TaskListProps) {
+export function TaskList({
+  tasks,
+  deleteTask,
+  toggleTaskStatus,
+}: TaskListProps) {
   function handleDeleteTask(index: number) {
     deleteTask(index);
   }
@@ -37,8 +42,16 @@ export function TaskList({ tasks, deleteTask }: TaskListProps) {
     <div className={styles.container}>
       {/* Header */}
       <div className={styles.header}>
-        <HeaderCounter title="Tarefas criadas" count="0" color="blue" />
-        <HeaderCounter title="Concluídas" count="2 de 5" color="purple" />
+        <HeaderCounter
+          title="Tarefas criadas"
+          count={tasks.length.toString()}
+          color="blue"
+        />
+        <HeaderCounter
+          title="Concluídas"
+          count={`${tasks.filter((t) => t.done).length} de ${tasks.length}`}
+          color="purple"
+        />
       </div>
       {/* Empty View */}
       {!tasks && (
@@ -66,6 +79,9 @@ export function TaskList({ tasks, deleteTask }: TaskListProps) {
                 name=""
                 id=""
                 checked={task.done}
+                onChange={(e) => {
+                  toggleTaskStatus(index);
+                }}
               />
               <p
                 className={

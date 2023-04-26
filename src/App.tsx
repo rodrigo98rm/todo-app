@@ -13,7 +13,7 @@ export interface Task {
 const tasksMock: Task[] = [
   {
     description: 'Send emails',
-    done: false,
+    done: true,
   },
   {
     description: 'Wash dishes',
@@ -45,11 +45,29 @@ function App() {
     setTasks([...tasks]);
   }
 
+  function toggleTaskStatus(index: number) {
+    const [taskToModify] = tasks.splice(index, 1);
+
+    taskToModify.done = !taskToModify.done;
+
+    if (!taskToModify.done) {
+      // Task not done, put it back on top of the list
+      setTasks([taskToModify, ...tasks]);
+    } else {
+      // Send task to bottom of the list
+      setTasks([...tasks, taskToModify]);
+    }
+  }
+
   return (
     <div className={styles.container}>
       <Header />
       <CreateTask addTask={addTask} />
-      <TaskList tasks={tasks} deleteTask={deleteTask} />
+      <TaskList
+        tasks={tasks}
+        deleteTask={deleteTask}
+        toggleTaskStatus={toggleTaskStatus}
+      />
     </div>
   );
 }
