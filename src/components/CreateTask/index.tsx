@@ -7,7 +7,7 @@ interface CreateTaskProps {
 }
 
 export function CreateTask({ addTask }: CreateTaskProps) {
-  const formRef = useRef(null);
+  const formRef = useRef<HTMLFormElement>(null);
 
   const [description, setDescription] = useState('');
 
@@ -24,10 +24,7 @@ export function CreateTask({ addTask }: CreateTaskProps) {
   }
 
   function handleKeyPress(e: KeyboardEvent<HTMLTextAreaElement>) {
-    console.log(e.key);
-    console.log(e.shiftKey);
-
-    if (e.key === 'Enter' && !e.shiftKey) {
+    if (formRef.current && e.key === 'Enter' && !e.shiftKey) {
       e.preventDefault();
       formRef.current.requestSubmit();
     }
