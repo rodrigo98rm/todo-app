@@ -54,7 +54,7 @@ export function TaskList({
         />
       </div>
       {/* Empty View */}
-      {!tasks && (
+      {tasks.length === 0 && (
         <div className={styles.emptyView}>
           <ClipboardText size={56} />
           <strong>Você ainda não tem tarefas cadastradas</strong>
@@ -62,7 +62,7 @@ export function TaskList({
         </div>
       )}
       {/* Task List */}
-      {!!tasks && (
+      {tasks.length > 0 && (
         <>
           {tasks.map((task, index) => (
             <div

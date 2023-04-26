@@ -10,24 +10,24 @@ export interface Task {
   done: boolean;
 }
 
-const tasksMock: Task[] = [
-  {
-    description: 'Send emails',
-    done: true,
-  },
-  {
-    description: 'Wash dishes',
-    done: true,
-  },
-  {
-    description:
-      'Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer.',
-    done: true,
-  },
-];
+// const tasksMock: Task[] = [
+//   {
+//     description: 'Send emails',
+//     done: true,
+//   },
+//   {
+//     description: 'Wash dishes',
+//     done: true,
+//   },
+//   {
+//     description:
+//       'Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer.',
+//     done: true,
+//   },
+// ];
 
 function App() {
-  const [tasks, setTasks] = useState(tasksMock);
+  const [tasks, setTasks] = useState<Task[]>([]);
 
   function addTask(description: string) {
     const newTask = {
