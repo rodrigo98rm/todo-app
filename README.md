@@ -15,6 +15,5 @@ Rocketseat's design available on [Figma](https://www.figma.com/file/eMRaOdRfG42q
 
 - Animate task list items when a task status is changed (https://medium.com/ft-product-technology/animating-list-reordering-with-react-hooks-1aa0d78a24dc)
 - Move completed task to the top of completed tasks (not the bottom)
-- Save tasks to browser's local storage
 - Refactor TaskList Component
 

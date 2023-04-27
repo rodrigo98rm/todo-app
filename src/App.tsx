@@ -3,31 +3,34 @@ import './global.css';
 import { Header } from './components/Header';
 import { CreateTask } from './components/CreateTask';
 import { TaskList } from './components/TaskList';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 export interface Task {
   description: string;
   done: boolean;
 }
 
-// const tasksMock: Task[] = [
-//   {
-//     description: 'Send emails',
-//     done: true,
-//   },
-//   {
-//     description: 'Wash dishes',
-//     done: true,
-//   },
-//   {
-//     description:
-//       'Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer.',
-//     done: true,
-//   },
-// ];
+const LOCAL_STORAGE_TASKS = 'rodrigo98rm-todo-app-tasks';
 
 function App() {
-  const [tasks, setTasks] = useState<Task[]>([]);
+  const [tasks, setTasks] = useState<Task[] | null>(null);
+
+  useEffect(() => {
+    const rawTasks = localStorage.getItem(LOCAL_STORAGE_TASKS);
+    if (rawTasks) {
+      const tasks = JSON.parse(rawTasks);
+      setTasks(tasks);
+    } else {
+      localStorage.setItem(LOCAL_STORAGE_TASKS, JSON.stringify([]));
+      setTasks([]);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (tasks !== null) {
+      localStorage.setItem(LOCAL_STORAGE_TASKS, JSON.stringify(tasks));
+    }
+  }, [tasks]);
 
   function addTask(description: string) {
     const newTask = {
@@ -36,16 +39,21 @@ function App() {
     };
 
     setTasks((oldTasks) => {
+      if (oldTasks === null) return null;
       return [newTask, ...oldTasks];
     });
   }
 
   function deleteTask(index: number) {
+    if (tasks === null) return;
+
     tasks.splice(index, 1);
     setTasks([...tasks]);
   }
 
   function toggleTaskStatus(index: number) {
+    if (tasks === null) return;
+
     const [taskToModify] = tasks.splice(index, 1);
 
     taskToModify.done = !taskToModify.done;
@@ -63,11 +71,13 @@ function App() {
     <div className={styles.container}>
       <Header />
       <CreateTask addTask={addTask} />
-      <TaskList
-        tasks={tasks}
-        deleteTask={deleteTask}
-        toggleTaskStatus={toggleTaskStatus}
-      />
+      {tasks && (
+        <TaskList
+          tasks={tasks}
+          deleteTask={deleteTask}
+          toggleTaskStatus={toggleTaskStatus}
+        />
+      )}
     </div>
   );
 }
